@@ -10,6 +10,6 @@ services:
       - key: NODE_ENV
         value: production
       - key: MONGO_URI
-        sync: false
+        value: mongodb+srv://admin:campusride123@cluster0.be9ttwf.mongodb.net/campusride?retryWrites=true&w=majority
       - key: JWT_SECRET
         generateValue: true

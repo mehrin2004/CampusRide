@@ -6,6 +6,8 @@ const Route = require('../models/Route');
 const Complaint = require('../models/Complaint');
 const Announcement = require('../models/Announcement');
 
+const path = require('path');
+dotenv.config({ path: path.join(__dirname, '../.env') });
 dotenv.config();
 
 const seedDatabaseHelper = async () => {
@@ -88,6 +90,15 @@ const seedDatabaseHelper = async () => {
 
   const adminUser = await User.create({
     _id: adminId,
+    name: 'Dr. M. Senthil Nathan (Transport Admin)',
+    email: 'admin@campusride.com',
+    password: 'admin123',
+    role: 'admin',
+    phone: '+91 94431 00202'
+  });
+
+  // Secondary admin alias
+  await User.create({
     name: 'Dr. M. Senthil Nathan (Transport Admin)',
     email: 'admin1@gmail.com',
     password: 'admin123',
@@ -216,6 +227,18 @@ const seedDatabaseHelper = async () => {
   // 4. Create Demo Student
   const studentUser = await User.create({
     _id: studentId,
+    name: 'Arun Kumar',
+    email: 'student@campusride.com',
+    password: 'student123',
+    role: 'student',
+    rollNumber: '953621104012',
+    department: 'Computer Science & Engineering',
+    phone: '+91 94871 22334',
+    parentPhone: '+91 94871 00202',
+    assignedBus: bus14A._id
+  });
+
+  await User.create({
     name: 'Arun Kumar',
     email: 'student@rcet.ac.in',
     password: 'student123',
