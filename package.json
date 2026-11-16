@@ -4,7 +4,7 @@
   "description": "CampusRide Transit & Fleet Management System",
   "main": "server/server.js",
   "scripts": {
-    "build": "npm run install:server && npm run install:client && npm run build:client",
+    "build": "cd server && npm install && cd ../client && npm install && npm run build",
     "install:server": "cd server && npm install",
     "install:client": "cd client && npm install",
     "build:client": "cd client && npm run build",
