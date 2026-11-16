@@ -172,9 +172,6 @@ const StudentDashboard = () => {
     };
   }, [socket]);
 
-  // Active Live Trip on the fleet
-  const activeTripBus = buses.find(b => b.isLiveTrip || (b.status === 'on_route' && (b.currentLocation?.speed > 0 || b.isLiveTrip)));
-
   return (
     <div className="space-y-6">
       
@@ -237,38 +234,6 @@ const StudentDashboard = () => {
           </button>
         </div>
       </div>
-
-      {/* Prominent Active Live Driving Banner (1-Click Switch to Active Bus) */}
-      {activeTripBus && assignedBus?._id !== activeTripBus._id && (
-        <div className="bg-gradient-to-r from-emerald-600 to-teal-700 text-white p-4 rounded-3xl shadow-lg border border-emerald-400 flex flex-col sm:flex-row sm:items-center justify-between gap-3 animate-fade-in">
-          <div className="flex items-center gap-3">
-            <span className="relative flex h-3.5 w-3.5 shrink-0">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-white"></span>
-            </span>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-[11px] font-black uppercase tracking-wider bg-emerald-800/80 px-2 py-0.5 rounded text-emerald-200">
-                  REAL-TIME GPS ACTIVE
-                </span>
-                <span className="text-xs font-bold text-white">
-                  Bus {activeTripBus.busNumber} is driving on its route right now!
-                </span>
-              </div>
-              <p className="text-[11px] text-emerald-100 font-medium mt-0.5">
-                {activeTripBus.routeName || 'Rohini College Campus Corridor'}
-              </p>
-            </div>
-          </div>
-          <button
-            onClick={() => handleBusSelect(activeTripBus._id)}
-            className="px-4 py-2 bg-white hover:bg-emerald-50 text-emerald-900 rounded-xl text-xs font-extrabold shadow transition cursor-pointer shrink-0 flex items-center gap-1.5"
-          >
-            <span>Track Bus {activeTripBus.busNumber} Live</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </button>
-        </div>
-      )}
 
       {showScannerModal && <StudentBoardingScannerModal user={user} onClose={() => setShowScannerModal(false)} />}
 
