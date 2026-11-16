@@ -1,0 +1,162 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { 
+  Bus, 
+  ShieldCheck, 
+  MapPin, 
+  Wrench, 
+  Megaphone, 
+  Clock, 
+  ArrowRight, 
+  Users, 
+  CheckCircle, 
+  Navigation, 
+  Activity 
+} from 'lucide-react';
+
+const LandingPage = () => {
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col justify-between overflow-hidden">
+      
+      {/* Background Decorative Gradient Orbs */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-gradient-to-b from-blue-600/15 via-emerald-500/10 to-transparent blur-3xl pointer-events-none"></div>
+
+      {/* Hero Section */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16 flex-1 flex flex-col justify-center">
+        
+        {/* Top Tagline Pill */}
+        <div className="flex justify-center mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/90 border border-slate-700/60 shadow-xl text-xs font-bold text-slate-200">
+            <span className="w-2 h-2 rounded-full bg-blue-500 animate-ping"></span>
+            <span className="text-blue-400">CampusRide v2.0</span> • Next-Gen Campus Transit & Maintenance
+          </div>
+        </div>
+
+        {/* Hero Title & Description */}
+        <div className="text-center max-w-4xl mx-auto space-y-4">
+          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
+            Real-Time Campus Transit, <br className="hidden sm:inline" />
+            <span className="bg-gradient-to-r from-blue-400 via-emerald-400 to-teal-300 bg-clip-text text-transparent">
+              Live Fleet Control & Maintenance
+            </span>
+          </h1>
+          <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto font-medium">
+            Empowering Students with live GPS bus tracking and instant delay alerts, Drivers with rapid single-tap vehicle complaint reporting, and Admins with total fleet control.
+          </p>
+        </div>
+
+        {/* Role Portal Cards Grid */}
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto w-full">
+          
+          {/* Student Portal Card */}
+          <div className="group relative rounded-3xl bg-slate-900/80 border border-slate-800/90 p-6 hover:border-emerald-500/50 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-300 flex flex-col justify-between glass-card">
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <Navigation className="w-6 h-6" />
+              </div>
+              <div>
+                <span className="text-[10px] font-extrabold uppercase tracking-widest text-emerald-400">ROLE PORTAL</span>
+                <h3 className="text-xl font-bold text-white mt-1">Student Portal</h3>
+                <p className="text-slate-400 text-xs mt-2 leading-relaxed">
+                  Track assigned bus in real-time on interactive GPS maps, check driver details, view ETA countdown, and receive delay/breakdown alerts.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between">
+              <Link
+                to="/login?role=student"
+                className="w-full py-2.5 px-4 rounded-xl bg-emerald-600/20 hover:bg-emerald-600 text-emerald-300 hover:text-white text-xs font-bold transition text-center flex items-center justify-center gap-2 group-hover:bg-emerald-600 group-hover:text-white"
+              >
+                Student Sign In <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Driver Portal Card */}
+          <div className="group relative rounded-3xl bg-slate-900/80 border border-slate-800/90 p-6 hover:border-amber-500/50 hover:shadow-2xl hover:shadow-amber-500/10 transition-all duration-300 flex flex-col justify-between glass-card">
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <Wrench className="w-6 h-6" />
+              </div>
+              <div>
+                <span className="text-[10px] font-extrabold uppercase tracking-widest text-amber-400">ROLE PORTAL</span>
+                <h3 className="text-xl font-bold text-white mt-1">Driver Portal</h3>
+                <p className="text-slate-400 text-xs mt-2 leading-relaxed">
+                  Control trip routes, trigger real-time GPS simulation, and report vehicle issues selecting problems like Seating, Fuel, Engine, Tire, Water Wash, etc.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between">
+              <Link
+                to="/login?role=driver"
+                className="w-full py-2.5 px-4 rounded-xl bg-amber-600/20 hover:bg-amber-600 text-amber-300 hover:text-white text-xs font-bold transition text-center flex items-center justify-center gap-2 group-hover:bg-amber-600 group-hover:text-white"
+              >
+                Driver Sign In <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Admin Portal Card */}
+          <div className="group relative rounded-3xl bg-slate-900/80 border border-slate-800/90 p-6 hover:border-purple-500/50 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-300 flex flex-col justify-between glass-card">
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/30 text-purple-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <ShieldCheck className="w-6 h-6" />
+              </div>
+              <div>
+                <span className="text-[10px] font-extrabold uppercase tracking-widest text-purple-400">ROLE PORTAL</span>
+                <h3 className="text-xl font-bold text-white mt-1">Admin Operations</h3>
+                <p className="text-slate-400 text-xs mt-2 leading-relaxed">
+                  Full control center: solve driver & student complaints, publish targeted progress updates, manage routes/buses, and launch announcements.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between">
+              <Link
+                to="/login?role=admin"
+                className="w-full py-2.5 px-4 rounded-xl bg-purple-600/20 hover:bg-purple-600 text-purple-300 hover:text-white text-xs font-bold transition text-center flex items-center justify-center gap-2 group-hover:bg-purple-600 group-hover:text-white"
+              >
+                Admin Sign In <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Feature Highlights Banner */}
+        <div className="mt-16 bg-slate-900/40 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-5xl mx-auto w-full grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <div>
+            <Clock className="w-6 h-6 text-blue-400 mx-auto mb-2" />
+            <h4 className="font-bold text-white text-sm">Real-Time ETA</h4>
+            <p className="text-slate-400 text-xs mt-1">Live recalculation</p>
+          </div>
+          <div>
+            <Wrench className="w-6 h-6 text-amber-400 mx-auto mb-2" />
+            <h4 className="font-bold text-white text-sm">Problem Selector</h4>
+            <p className="text-slate-400 text-xs mt-1">Seating, Fuel, Engine, Tire</p>
+          </div>
+          <div>
+            <Users className="w-6 h-6 text-emerald-400 mx-auto mb-2" />
+            <h4 className="font-bold text-white text-sm">Targeted Resolution</h4>
+            <p className="text-slate-400 text-xs mt-1">Upload for Driver vs Student</p>
+          </div>
+          <div>
+            <Activity className="w-6 h-6 text-purple-400 mx-auto mb-2" />
+            <h4 className="font-bold text-white text-sm">GPS Simulation</h4>
+            <p className="text-slate-400 text-xs mt-1">Driver live trajectory</p>
+          </div>
+        </div>
+
+      </main>
+
+      {/* Footer */}
+      <footer className="border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+        <p>© 2026 CampusRide System. Built for Smart Campus Transit.</p>
+      </footer>
+    </div>
+  );
+};
+
+export default LandingPage;

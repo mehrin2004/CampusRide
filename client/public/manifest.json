@@ -1,0 +1,29 @@
+{
+  "short_name": "CampusRide",
+  "name": "CampusRide | Rohini College Transit & Fleet Management",
+  "description": "Smart Campus Transit, Live Fleet Control & Maintenance for Rohini College",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/favicon.png",
+      "type": "image/png",
+      "sizes": "64x64 32x32 24x24 16x16"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#fffbeb",
+  "theme_color": "#f59e0b",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "categories": ["utilities", "transportation", "education"]
+}
