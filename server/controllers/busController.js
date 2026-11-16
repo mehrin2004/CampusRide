@@ -219,6 +219,52 @@ exports.updateBusLocation = async (req, res) => {
   }
 };
 
+// @desc    Update bus status (delayed, breakdown, on_route, idle)
+// @route   PUT /api/buses/:id/status
+// @access  Private (Driver / Admin)
+exports.updateBusStatus = async (req, res) => {
+  try {
+    const { status, note } = req.body;
+    const bus = await Bus.findById(req.params.id);
+    if (!bus) {
+      return res.status(404).json({ success: false, message: 'Bus not found' });
+    }
+
+    if (status) {
+      bus.status = status;
+    }
+    await bus.save();
+
+    // Broadcast status change across all dashboards via Socket.io
+    const io = req.app.get('io');
+    if (io) {
+      io.emit('bus_status_updated', {
+        busId: bus._id,
+        busNumber: bus.busNumber,
+        status: bus.status,
+        note: note || `Bus ${bus.busNumber} status changed to ${bus.status}`,
+        timestamp: new Date()
+      });
+
+      io.emit('bus_location_update', {
+        busId: bus._id,
+        busNumber: bus.busNumber,
+        location: bus.currentLocation,
+        status: bus.status,
+        estimatedArrival: bus.estimatedArrival
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: `Bus ${bus.busNumber} status updated to ${bus.status}`,
+      data: bus
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
 // @desc    Start server-side trip simulation (persists even if driver logs out)
 // @route   POST /api/buses/:id/start-simulation
 // @access  Private (Driver / Admin)
